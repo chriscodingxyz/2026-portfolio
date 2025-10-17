@@ -25,8 +25,8 @@ const courierPrime = Courier_Prime({
 });
 
 export const metadata: Metadata = {
-  title: "The Artificial Times - Volume 1, Issue 1",
-  description: "The Paper of Record for the New Industrial Age",
+  title: "Chris Wiz - FullStack Engineer Portfolio",
+  description: "FullStack Engineer specializing in React, Next.js, TypeScript, and modern web development. Building innovative digital experiences.",
 };
 
 export default function RootLayout({
