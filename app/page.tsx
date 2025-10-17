@@ -4,7 +4,7 @@ import { Envelope, TwitterLogo, GithubLogo } from '@phosphor-icons/react'
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-white text-black'>
+    <div className='min-h-screen bg-[#e8e8e8] text-black'>
       {/* Main Content */}
       <div className='max-w-6xl mx-auto p-8'>
         {/* Header */}
@@ -64,7 +64,7 @@ export default function Home() {
         </header>
 
         {/* Grid matching source.png EXACTLY */}
-        <div className='hidden lg:block mb-8 relative bg-white border border-black'>
+        <div className='hidden lg:block mb-8 relative bg-[#fafafa] border-[0.5px] border-black'>
           <div
             className='grid'
             style={{
@@ -91,7 +91,7 @@ export default function Home() {
 
             {/* VOLUME 1, ISSUE 1 box - top left */}
             <div
-              className='bg-gray-100 relative z-10 flex items-center justify-center'
+              className='bg-gray-100 relative z-10 flex items-center justify-center m-[0.5px]'
               style={{
                 gridColumn: '2 / 10',
                 gridRow: '2 / 4'
@@ -166,6 +166,21 @@ export default function Home() {
               }}
             >
               Y
+            </div>
+
+            {/* Mercury image - positioned from bottom extending up */}
+            <div
+              className='relative z-10 flex items-end justify-center overflow-hidden'
+              style={{
+                gridColumn: '28 / 38',
+                gridRow: '8 / 23'
+              }}
+            >
+              <img
+                src='/mercury.png'
+                alt='Mercury'
+                className='w-full h-auto object-contain object-bottom'
+              />
             </div>
 
             {/* Barcode */}
