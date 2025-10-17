@@ -1,3 +1,7 @@
+"use client";
+
+import { Envelope, TwitterLogo, GithubLogo } from "@phosphor-icons/react";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black">
@@ -26,11 +30,20 @@ export default function Home() {
           </h1>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-[10px] md:text-xs font-mono mt-4">
-            <a href="mailto:chriscoding@icloud.com" className="hover:underline">chriscoding@icloud.com</a>
+            <a href="mailto:chriscoding@icloud.com" className="hover:underline flex items-center gap-1.5">
+              <Envelope size={14} weight="bold" />
+              chriscoding@icloud.com
+            </a>
             <span className="hidden md:inline">•</span>
-            <a href="https://twitter.com/chriscodingxyz" target="_blank" rel="noopener noreferrer" className="hover:underline">@chriscodingxyz</a>
+            <a href="https://twitter.com/chriscodingxyz" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1.5">
+              <TwitterLogo size={14} weight="bold" />
+              @chriscodingxyz
+            </a>
             <span className="hidden md:inline">•</span>
-            <a href="https://github.com/chriscodingxyz" target="_blank" rel="noopener noreferrer" className="hover:underline">github.com/chriscodingxyz</a>
+            <a href="https://github.com/chriscodingxyz" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1.5">
+              <GithubLogo size={14} weight="bold" />
+              github.com/chriscodingxyz
+            </a>
           </div>
         </header>
 
