@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, UnifrakturMaguntia, Courier_Prime } from "next/font/google";
+import { Geist, Geist_Mono, Courier_Prime } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,10 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const unifraktur = UnifrakturMaguntia({
-  weight: "400",
-  variable: "--font-gothic",
-  subsets: ["latin"],
+const chomsky = localFont({
+  src: "../public/fonts/Chomsky.otf",
+  variable: "--font-chomsky",
+  display: "swap",
 });
 
 const courierPrime = Courier_Prime({
@@ -37,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${unifraktur.variable} ${courierPrime.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${chomsky.variable} ${courierPrime.variable} antialiased`}
       >
         {children}
       </body>
