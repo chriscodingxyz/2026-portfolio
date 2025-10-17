@@ -4,7 +4,7 @@ import { Envelope, TwitterLogo, GithubLogo } from '@phosphor-icons/react'
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-[#e8e8e8] text-black'>
+    <div className='min-h-screen bg-[#fafafa] text-black'>
       {/* Main Content */}
       <div className='max-w-6xl mx-auto p-8'>
         {/* Header */}
@@ -91,7 +91,7 @@ export default function Home() {
 
             {/* VOLUME 1, ISSUE 1 box - top left */}
             <div
-              className='bg-gray-100 relative z-10 flex items-center justify-center m-[0.5px]'
+              className='bg-[#e8e8e8] relative z-10 flex items-center justify-center m-[0.5px]'
               style={{
                 gridColumn: '2 / 10',
                 gridRow: '2 / 4'
