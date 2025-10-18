@@ -1,6 +1,6 @@
 'use client'
 
-import { Envelope, TwitterLogo, GithubLogo } from '@phosphor-icons/react'
+import { Envelope, GithubLogo, XLogoIcon } from '@phosphor-icons/react'
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
         {/* Header */}
         <header className='mb-4 md:mb-6'>
           {/* Top border section - matching source.png */}
-          <div className='border-t-2 border-b-2 md:border-t-2 md:border-b-4 border-black py-2 md:py-3 mb-4 md:mb-6'>
+          <div className='border-t-2 border-b-2 md:border-t-2 md:border-b-2 border-black py-2 md:py-3 mb-4 md:mb-6'>
             <div className='flex lg:flex-row justify-between items-center lg:items-start gap-2 lg:gap-0'>
               <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono'>
                 ISSUE #420
@@ -32,13 +32,13 @@ export default function Home() {
             Chris Wisniewski
           </h1>
 
-          <div className='flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-[10px] md:text-xs font-mono mt-4'>
+          <div className='flex flex-col md:flex-row justify-center items-center gap-2 text-[10px] md:text-xs font-mono mt-4'>
             <a
               href='mailto:chriscoding@icloud.com'
               className='hover:underline flex items-center gap-1.5'
             >
               <Envelope size={14} weight='bold' />
-              chriscoding@icloud.com
+              {/* chriscoding@icloud.com */}
             </a>
             <span className='hidden md:inline'>•</span>
             <a
@@ -47,8 +47,8 @@ export default function Home() {
               rel='noopener noreferrer'
               className='hover:underline flex items-center gap-1.5'
             >
-              <TwitterLogo size={14} weight='bold' />
-              @chriscodingxyz
+              <XLogoIcon size={14} weight='bold' />
+              {/* @chriscodingxyz */}
             </a>
             <span className='hidden md:inline'>•</span>
             <a
@@ -58,7 +58,7 @@ export default function Home() {
               className='hover:underline flex items-center gap-1.5'
             >
               <GithubLogo size={14} weight='bold' />
-              github.com/chriscodingxyz
+              {/* github.com/chriscodingxyz */}
             </a>
           </div>
         </header>
