@@ -26,11 +26,11 @@ export default function Home() {
   return (
     <div className='min-h-screen bg-background text-foreground'>
       {/* Main Content */}
-      <div className='container p-8'>
+      <div className='container'>
         {/* Header */}
         <header className='mb-4 md:mb-6'>
           {/* Top border section - matching source.png */}
-          <div className='border-t-2 border-b-2 md:border-t-2 md:border-b-2 border-black py-2 md:py-3 mb-4 md:mb-6'>
+          <div className='border-b-2 border-t-2 border-black py-2 md:py-3 mb-4 md:mb-6'>
             <div className='flex lg:flex-row justify-between items-center lg:items-start gap-2 lg:gap-0'>
               <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono'>
                 ISSUE #420
@@ -52,7 +52,7 @@ export default function Home() {
             Chris Wisniewski
           </h1>
 
-          <div className='flex flex-col md:flex-row justify-center items-center gap-2 text-[10px] md:text-xs font-mono mt-4'>
+          <div className='flex flex-row justify-center items-center gap-2 text-[10px] md:text-xs font-mono mt-4'>
             <a
               href='mailto:chriscoding@icloud.com'
               className='hover:underline flex items-center gap-1.5'
@@ -84,7 +84,7 @@ export default function Home() {
         </header>
 
         {/* Grid matching source.png EXACTLY */}
-        <div className='mb-8 relative bg-[#fafafa] border-[0.5px] border-black'>
+        <div className='mb-8 relative bg-[#fafafa] border-[1px] border-black'>
           <div
             className='grid'
             style={{
@@ -99,7 +99,7 @@ export default function Home() {
             {Array.from({ length: 46 * 22 }).map((_, i) => (
               <div
                 key={`cell-${i}`}
-                className='border-[0.5px] border-black'
+                className='border-[1px] border-black'
                 style={{
                   gridColumn: `${(i % 46) + 1} / ${(i % 46) + 2}`,
                   gridRow: `${Math.floor(i / 46) + 1} / ${
@@ -111,7 +111,7 @@ export default function Home() {
 
             {/* VOLUME 1, ISSUE 1 box - top left */}
             <div
-              className='bg-[#e8e8e8] relative z-10 flex items-center justify-center m-[0.5px]'
+              className='bg-[#e8e8e8] relative z-10 flex items-center justify-center m-[1px]'
               style={{
                 gridColumn: '2 / 10',
                 gridRow: '2 / 4'
@@ -157,7 +157,7 @@ export default function Home() {
 
             {/* Top right decorative globe */}
             <div
-              className='relative z-10 flex items-center justify-center bg-white m-[0.5px]'
+              className='relative z-10 flex items-center justify-center bg-white m-[1px]'
               style={{
                 gridColumn: '22 / 27',
                 gridRow: '2 / 5'
@@ -242,106 +242,106 @@ export default function Home() {
         </div>
 
         {/* Tech Icons Grid - Single Row */}
-        <div className='border-[0.5px] border-black mb-6 md:mb-8'>
+        <div className='border-1 border-black mb-6 md:mb-8'>
           <div className='grid grid-cols-17 gap-0'>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='React'
             >
               <ReactIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Next.js'
             >
               <Nextjs className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='TypeScript'
             >
               <TypeScript className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Tailwind CSS'
             >
               <TailwindCSS className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Node.js'
             >
               <Nodejs className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='PostgreSQL'
             >
               <PostgreSQL className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Drizzle ORM'
             >
               <DrizzleORM className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Supabase'
             >
               <Supabase className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='React Query'
             >
               <ReactQuery className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Better Auth'
             >
               <BetterAuth className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='shadcn/ui'
             >
               <Shadcnui className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Docker'
             >
               <Docker className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Vercel'
             >
               <VercelIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='GitHub'
             >
               <GithubIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Claude AI'
             >
               <ClaudeAI className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Resend'
             >
               <ResendIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              className='border-1 border-black p-1 flex items-center justify-center'
               title='Stripe'
             >
               <Stripe className='w-3 h-3 md:w-4 md:h-4' />
