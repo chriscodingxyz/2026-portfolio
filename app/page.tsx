@@ -73,7 +73,7 @@ function parseCoordinate(coord: string): {
 const GRID_PLOTS: Record<string, Record<Breakpoint, string>> = {
   volumeBox: {
     mobile: 'B2:I3',
-    sm: 'B2:J4',
+    sm: 'B2:J2',
     md: 'B2:J5',
     lg: 'B2:J5',
     xl: 'B2:J5'
@@ -143,10 +143,16 @@ export default function Home() {
         {/* Header */}
         <header className='mb-4 md:mb-6'>
           {/* Top border section - matching source.png */}
-          <div className='border-b-2 border-t-2 border-black py-2 md:py-3 mb-4 md:mb-6'>
+          <div className='border-b-2 border-t-2 border-primary py-2 md:py-3 mb-4 md:mb-6'>
             <div className='flex lg:flex-row justify-between items-center lg:items-start gap-2 lg:gap-0'>
               <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono'>
-                ISSUE #420
+                {new Date()
+                  .toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })
+                  .toUpperCase()}
               </div>
               <div className='text-[10px] md:text-xs uppercase tracking-wider text-center flex-1 font-mono'>
                 FULLSTACK ENGINEER
@@ -197,7 +203,7 @@ export default function Home() {
         </header>
 
         {/* Responsive Grid - scales from 12x12 on mobile to 46x22 on xl */}
-        <div className='mb-8 relative bg-[#fafafa] border-[1px] border-black'>
+        <div className='mb-8 relative  border-[1px] border-primary'>
           {/* Background grid cells layer */}
           <div
             className='responsive-grid absolute inset-0'
@@ -235,7 +241,7 @@ export default function Home() {
 
             {/* Black hero box "The New Aesthetic of Progress" */}
             <div
-              className='bg-black text-white p-2 sm:p-4 md:p-6 relative z-10 flex items-center'
+              className='bg-primary text-background p-2 sm:p-4 md:p-6 relative z-10 flex items-center m-[1px]'
               style={getGridStyle('heroBox', viewport)}
             >
               <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-serif'>
@@ -274,7 +280,7 @@ export default function Home() {
             </div> */}
 
             {/* Y marker */}
-            {/* <div className='grid-y-marker bg-black text-white relative z-10 flex items-center justify-center text-sm sm:text-lg md:text-xl font-bold'>
+            {/* <div className='grid-y-marker bg-background text-white relative z-10 flex items-center justify-center text-sm sm:text-lg md:text-xl font-bold'>
               Y
             </div> */}
 
@@ -292,7 +298,7 @@ export default function Home() {
 
             {/* Barcode */}
             {/* <div
-              className='bg-black relative z-10 flex items-center justify-center'
+              className='bg-background relative z-10 flex items-center justify-center'
               style={{
                 gridColumn: '24 / 32',
                 gridRow: '17 / 19'
@@ -317,106 +323,106 @@ export default function Home() {
         </div>
 
         {/* Tech Icons Grid - Single Row */}
-        <div className='border-1 border-black mb-6 md:mb-8'>
+        <div className='border-1 border-primary mb-6 md:mb-8'>
           <div className='grid grid-cols-17 gap-0'>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='React'
             >
               <ReactIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Next.js'
             >
               <Nextjs className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='TypeScript'
             >
               <TypeScript className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Tailwind CSS'
             >
               <TailwindCSS className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Node.js'
             >
               <Nodejs className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='PostgreSQL'
             >
               <PostgreSQL className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Drizzle ORM'
             >
               <DrizzleORM className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Supabase'
             >
               <Supabase className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='React Query'
             >
               <ReactQuery className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Better Auth'
             >
               <BetterAuth className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='shadcn/ui'
             >
               <Shadcnui className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Docker'
             >
               <Docker className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Vercel'
             >
               <VercelIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='GitHub'
             >
               <GithubIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Claude AI'
             >
               <ClaudeAI className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Resend'
             >
               <ResendIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-black p-1 flex items-center justify-center'
+              className='border-1 border-primary p-1 flex items-center justify-center'
               title='Stripe'
             >
               <Stripe className='w-3 h-3 md:w-4 md:h-4' />
@@ -425,7 +431,7 @@ export default function Home() {
         </div>
 
         {/* Subheader */}
-        <div className='border-t-2 border-b-2 border-black py-2 mb-6 md:mb-8'>
+        <div className='border-t-2 border-b-2 border-primary py-2 mb-6 md:mb-8'>
           <div className='flex justify-between items-center gap-2'>
             <div className='flex items-center gap-2 md:gap-4 flex-1'>
               <span className='text-base md:text-xl font-bold'>
@@ -443,7 +449,7 @@ export default function Home() {
                 {Array.from({ length: 8 }).map((_, i) => (
                   <div
                     key={i}
-                    className={`w-1 h-4 md:h-6 bg-black`}
+                    className={`w-1 h-4 md:h-6 bg-background`}
                     style={{ width: i % 2 === 0 ? '3px' : '1.5px' }}
                   />
                 ))}
@@ -471,7 +477,7 @@ export default function Home() {
             </h3>
 
             {/* Terminal Box */}
-            <div className='bg-black text-green-400 p-4 md:p-6 font-mono text-[10px] md:text-xs mb-4'>
+            <div className='bg-background text-green-400 p-4 md:p-6 font-mono text-[10px] md:text-xs mb-4'>
               <div className='mb-3 md:mb-4 text-right text-gray-500'>
                 DEPLOYED
               </div>
@@ -512,7 +518,7 @@ export default function Home() {
               href='https://cherrydub98.vercel.app'
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-block border-2 border-black px-3 md:px-4 py-2 text-[10px] md:text-xs font-mono hover:bg-black hover:text-white transition-colors'
+              className='inline-block border-2 border-primary px-3 md:px-4 py-2 text-[10px] md:text-xs font-mono hover:bg-background hover:text-white transition-colors'
             >
               VIEW PROJECT →
             </a>
@@ -534,7 +540,7 @@ export default function Home() {
             </h3>
 
             {/* Tech Stack Visual */}
-            <div className='bg-black text-white p-4 md:p-6 font-mono text-[10px] md:text-xs mb-4'>
+            <div className='bg-background text-white p-4 md:p-6 font-mono text-[10px] md:text-xs mb-4'>
               <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                 <div className='space-y-2'>
                   <div className='text-blue-400'>// FRONTEND</div>
@@ -576,13 +582,13 @@ export default function Home() {
                 href='https://github.com/chriscodingxyz'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='inline-block border-2 border-black px-3 md:px-4 py-2 text-[10px] md:text-xs font-mono hover:bg-black hover:text-white transition-colors text-center'
+                className='inline-block border-2 border-primary px-3 md:px-4 py-2 text-[10px] md:text-xs font-mono hover:bg-background hover:text-white transition-colors text-center'
               >
                 GITHUB →
               </a>
               <a
                 href='mailto:chriscoding@icloud.com'
-                className='inline-block border-2 border-black px-3 md:px-4 py-2 text-[10px] md:text-xs font-mono hover:bg-black hover:text-white transition-colors text-center'
+                className='inline-block border-2 border-primary px-3 md:px-4 py-2 text-[10px] md:text-xs font-mono hover:bg-background hover:text-white transition-colors text-center'
               >
                 CONTACT →
               </a>
@@ -591,12 +597,14 @@ export default function Home() {
         </div>
 
         {/* Footer Checkered Pattern */}
-        <div className='border-t-4 border-black pt-4'>
+        <div className='border-t-4 border-primary pt-4'>
           <div className='flex h-6 overflow-hidden'>
             {Array.from({ length: 50 }).map((_, i) => (
               <div
                 key={i}
-                className={`flex-1 ${i % 2 === 0 ? 'bg-black' : 'bg-white'}`}
+                className={`flex-1 ${
+                  i % 2 === 0 ? 'bg-background' : 'bg-white'
+                }`}
               />
             ))}
           </div>
