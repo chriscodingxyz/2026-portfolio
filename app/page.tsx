@@ -175,9 +175,21 @@ export default function Home() {
                   })
                   .toUpperCase()}
               </div>
-              <div className='text-[10px] md:text-xs uppercase tracking-wider text-center flex-1 font-mono'>
-                FULLSTACK ENGINEER
-              </div>
+              <nav className='text-[10px] md:text-xs uppercase tracking-wider text-center flex-1 font-mono'>
+                <div className='flex items-center justify-center gap-3 md:gap-6'>
+                  <a href='#tech-stack' className='hover:underline'>
+                    Tech Stack
+                  </a>
+                  <span>•</span>
+                  <a href='#projects' className='hover:underline'>
+                    Projects
+                  </a>
+                  <span>•</span>
+                  <a href='#experience' className='hover:underline'>
+                    Experience
+                  </a>
+                </div>
+              </nav>
               <div className='flex items-center'>
                 <NewspaperThemeToggle />
               </div>
@@ -192,35 +204,6 @@ export default function Home() {
             Chris Wisniewski
           </h1>
 
-          <div className='flex flex-row justify-center items-center gap-2 text-[10px] md:text-xs font-mono mt-4'>
-            <a
-              href='mailto:chriscoding@icloud.com'
-              className='hover:underline flex items-center gap-1.5'
-            >
-              <Envelope size={14} weight='bold' />
-              {/* chriscoding@icloud.com */}
-            </a>
-            <span className='hidden md:inline'>•</span>
-            <a
-              href='https://twitter.com/chriscodingxyz'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:underline flex items-center gap-1.5'
-            >
-              <XLogoIcon size={14} weight='bold' />
-              {/* @chriscodingxyz */}
-            </a>
-            <span className='hidden md:inline'>•</span>
-            <a
-              href='https://github.com/chriscodingxyz'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:underline flex items-center gap-1.5'
-            >
-              <GithubLogo size={14} weight='bold' />
-              {/* github.com/chriscodingxyz */}
-            </a>
-          </div>
         </header>
 
         {/* Responsive Grid - scales from 12x12 on mobile to 46x22 on xl */}
@@ -380,7 +363,7 @@ export default function Home() {
         </div>
 
         {/* Tech Icons Grid - Single Row */}
-        <div className='border-1 border-primary mb-6 md:mb-8'>
+        <div id='tech-stack' className='border-1 border-primary mb-6 md:mb-8'>
           <div className='grid grid-cols-17 gap-0'>
             <div
               className='border-1 border-primary p-1 flex items-center justify-center'
@@ -488,7 +471,7 @@ export default function Home() {
         </div>
 
         {/* Subheader */}
-        <div className='border-t-2 border-b-2 border-primary py-2 mb-6 md:mb-8'>
+        <div className='py-2 mb-6 md:mb-8'>
           <div className='flex justify-between items-center gap-2'>
             <div className='flex items-center gap-2 md:gap-4 flex-1'>
               <span className='text-base md:text-xl font-bold'>
@@ -517,7 +500,7 @@ export default function Home() {
         </div>
 
         {/* Projects Section */}
-        <div className='grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8'>
+        <div id='projects' className='grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8'>
           {/* Project 1 - Windows 98 */}
           <div className='border-2 border-primary group hover:bg-muted transition-colors'>
             <div className='aspect-video bg-primary overflow-hidden'>
@@ -621,6 +604,116 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Experience Section */}
+        <section id='experience' className='mb-6 md:mb-8'>
+          <div className='py-2 mb-6 md:mb-8'>
+            <h2 className='text-base md:text-xl font-bold font-mono'>
+              &gt;&gt;&gt;&gt;&gt; EXPERIENCE
+            </h2>
+          </div>
+
+          {/* Timeline */}
+          <div className='relative'>
+            {/* Timeline items */}
+            <div className='relative grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4'>
+              {/* 2018-2022: IT Consultant */}
+              <div className='relative'>
+                <div className='flex flex-col items-center md:items-start'>
+                  {/* Dot */}
+                  <div className='w-3 h-3 bg-primary rounded-full border-2 border-background mb-3 relative z-10' />
+                  {/* Content */}
+                  <div className='text-center md:text-left'>
+                    <div className='text-[10px] md:text-xs font-mono font-bold mb-1'>
+                      2018 - 2022
+                    </div>
+                    <h3 className='text-xs md:text-sm font-bold font-mono mb-1'>
+                      IT Consultant
+                    </h3>
+                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
+                      MacSeven
+                    </p>
+                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
+                      London, UK
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2023: Junior Developer */}
+              <div className='relative'>
+                <div className='flex flex-col items-center md:items-start'>
+                  {/* Dot */}
+                  <div className='w-3 h-3 bg-primary rounded-full border-2 border-background mb-3 relative z-10' />
+                  {/* Content */}
+                  <div className='text-center md:text-left'>
+                    <div className='text-[10px] md:text-xs font-mono font-bold mb-1'>
+                      2023
+                    </div>
+                    <h3 className='text-xs md:text-sm font-bold font-mono mb-1'>
+                      Junior Developer
+                    </h3>
+                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
+                      NorthCoders
+                    </p>
+                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
+                      Remote, UK
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2023-2024: Freelance Developer */}
+              <div className='relative'>
+                <div className='flex flex-col items-center md:items-start'>
+                  {/* Dot */}
+                  <div className='w-3 h-3 bg-primary rounded-full border-2 border-background mb-3 relative z-10' />
+                  {/* Content */}
+                  <div className='text-center md:text-left'>
+                    <div className='text-[10px] md:text-xs font-mono font-bold mb-1'>
+                      2023 - 2024
+                    </div>
+                    <h3 className='text-xs md:text-sm font-bold font-mono mb-1'>
+                      Freelance Developer
+                    </h3>
+                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
+                      LittleCraftsLondon
+                    </p>
+                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
+                      Remote, UK
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2024-Present: Fullstack Developer */}
+              <div className='relative'>
+                <div className='flex flex-col items-center md:items-start'>
+                  {/* Animated dot for current position */}
+                  <div className='relative mb-3 z-10'>
+                    <div className='w-3 h-3 bg-green-500 rounded-full border-2 border-background animate-pulse' />
+                    <div className='absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-75' />
+                  </div>
+                  {/* Content */}
+                  <div className='text-center md:text-left'>
+                    <div className='text-[10px] md:text-xs font-mono font-bold mb-1 flex items-center justify-center md:justify-start gap-1'>
+                      2024 - PRESENT
+                    </div>
+                    <h3 className='text-xs md:text-sm font-bold font-mono mb-1'>
+                      Fullstack Developer
+                    </h3>
+                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
+                      27.works
+                    </p>
+                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
+                      Remote, UK
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Footer */}
         <footer className='border-t-2 border-primary pt-6 pb-8 mt-8'>
           <div className='flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono'>
@@ -629,16 +722,29 @@ export default function Home() {
               <div className='text-muted-foreground mt-1'>ALL RIGHTS RESERVED</div>
             </div>
             <div className='flex items-center gap-4'>
-              <a href='mailto:chriscoding@icloud.com' className='hover:underline'>
-                CONTACT
+              <a
+                href='mailto:chriscoding@icloud.com'
+                className='hover:underline flex items-center gap-1.5'
+              >
+                <Envelope size={16} weight='bold' />
               </a>
               <span>•</span>
-              <a href='https://github.com/chriscodingxyz' target='_blank' rel='noopener noreferrer' className='hover:underline'>
-                GITHUB
+              <a
+                href='https://twitter.com/chriscodingxyz'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='hover:underline flex items-center gap-1.5'
+              >
+                <XLogoIcon size={16} weight='bold' />
               </a>
               <span>•</span>
-              <a href='https://twitter.com/chriscodingxyz' target='_blank' rel='noopener noreferrer' className='hover:underline'>
-                TWITTER
+              <a
+                href='https://github.com/chriscodingxyz'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='hover:underline flex items-center gap-1.5'
+              >
+                <GithubLogo size={16} weight='bold' />
               </a>
             </div>
           </div>
