@@ -1,6 +1,25 @@
 'use client'
 
 import { Envelope, GithubLogo, XLogoIcon } from '@phosphor-icons/react'
+import {
+  DrizzleORM,
+  BetterAuth,
+  ClaudeAI,
+  Supabase,
+  Nodejs,
+  Stripe,
+  Shadcnui,
+  PostgreSQL,
+  ReactQuery,
+  Docker,
+  TypeScript,
+  Nextjs,
+  TailwindCSS,
+  ReactIcon,
+  GithubIcon,
+  VercelIcon,
+  ResendIcon
+} from '@/components/TechIcons'
 
 export default function Home() {
   return (
@@ -221,6 +240,114 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Tech Icons Grid - Single Row */}
+        <div className='border-[0.5px] border-black mb-6 md:mb-8'>
+          <div className='grid grid-cols-17 gap-0'>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='React'
+            >
+              <ReactIcon className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Next.js'
+            >
+              <Nextjs className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='TypeScript'
+            >
+              <TypeScript className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Tailwind CSS'
+            >
+              <TailwindCSS className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Node.js'
+            >
+              <Nodejs className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='PostgreSQL'
+            >
+              <PostgreSQL className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Drizzle ORM'
+            >
+              <DrizzleORM className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Supabase'
+            >
+              <Supabase className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='React Query'
+            >
+              <ReactQuery className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Better Auth'
+            >
+              <BetterAuth className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='shadcn/ui'
+            >
+              <Shadcnui className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Docker'
+            >
+              <Docker className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Vercel'
+            >
+              <VercelIcon className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='GitHub'
+            >
+              <GithubIcon className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Claude AI'
+            >
+              <ClaudeAI className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Resend'
+            >
+              <ResendIcon className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+            <div
+              className='border-[0.5px] border-black p-1 flex items-center justify-center'
+              title='Stripe'
+            >
+              <Stripe className='w-3 h-3 md:w-4 md:h-4' />
+            </div>
+          </div>
+        </div>
+
         {/* Subheader */}
         <div className='border-t-2 border-b-2 border-black py-2 mb-6 md:mb-8'>
           <div className='flex justify-between items-center gap-2'>
@@ -346,16 +473,16 @@ export default function Home() {
                   <div className='text-green-400'>// BACKEND</div>
                   <div className='pl-4 space-y-1'>
                     <div>→ Node.js</div>
-                    <div>→ Express</div>
                     <div>→ PostgreSQL</div>
-                    <div>→ MongoDB</div>
+                    <div>→ Drizzle ORM</div>
+                    <div>→ Supabase</div>
                   </div>
                 </div>
               </div>
               <div className='mt-4 pt-4 border-t border-gray-700'>
                 <div className='text-yellow-400'>// TOOLS</div>
                 <div className='pl-4 mt-1 space-y-1'>
-                  <div>→ Git/GitHub • Vercel • Docker • VS Code</div>
+                  <div>→ Docker • Vercel • Claude AI • Better Auth</div>
                 </div>
               </div>
             </div>
