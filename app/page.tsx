@@ -158,7 +158,7 @@ function getGridStyle(plotName: string, viewport: Breakpoint) {
 export default function Home() {
   const viewport = useViewport()
   return (
-    <div className='min-h-screen bg-background text-foreground'>
+    <div className='min-h-screen bg-background text-foreground grayscale'>
       {/* Main Content */}
       <div className='container'>
         {/* Header */}
