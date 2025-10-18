@@ -21,8 +21,121 @@ import {
   ResendIcon
 } from '@/components/TechIcons'
 import { NewspaperThemeToggle } from '@/components/newspaper-theme-toggle'
+import { useEffect, useState } from 'react'
+
+// Grid configuration per viewport
+const GRID_CONFIG = {
+  mobile: { cols: 17, rows: 12 },
+  sm: { cols: 20, rows: 20 },
+  md: { cols: 28, rows: 28 },
+  lg: { cols: 40, rows: 40 },
+  xl: { cols: 46, rows: 22 }
+} as const
+
+// Viewport breakpoints
+type Breakpoint = 'mobile' | 'sm' | 'md' | 'lg' | 'xl'
+
+// Convert letter to column number (A=1, B=2, ..., Z=26, AA=27, AB=28, etc.)
+function letterToNumber(letter: string): number {
+  let result = 0
+  for (let i = 0; i < letter.length; i++) {
+    result = result * 26 + (letter.charCodeAt(i) - 64)
+  }
+  return result
+}
+
+// Parse coordinate string like "B2:J4" to {col: [2, 10], row: [2, 4]}
+function parseCoordinate(coord: string): {
+  col: [number, number]
+  row: [number, number]
+} {
+  const [start, end] = coord.split(':')
+
+  // Parse start coordinate (e.g., "B2")
+  const startMatch = start.match(/^([A-Z]+)(\d+)$/)
+  if (!startMatch) throw new Error(`Invalid coordinate: ${start}`)
+  const startCol = letterToNumber(startMatch[1])
+  const startRow = parseInt(startMatch[2])
+
+  // Parse end coordinate (e.g., "J4")
+  const endMatch = end.match(/^([A-Z]+)(\d+)$/)
+  if (!endMatch) throw new Error(`Invalid coordinate: ${end}`)
+  const endCol = letterToNumber(endMatch[1])
+  const endRow = parseInt(endMatch[2])
+
+  return {
+    col: [startCol, endCol + 1], // +1 because grid-column end is exclusive
+    row: [startRow, endRow + 1] // +1 because grid-row end is exclusive
+  }
+}
+
+// Define plot coordinates for each element at each viewport
+const GRID_PLOTS: Record<string, Record<Breakpoint, string>> = {
+  volumeBox: {
+    mobile: 'B2:I3',
+    sm: 'B2:J4',
+    md: 'B2:J5',
+    lg: 'B2:J5',
+    xl: 'B2:J5'
+  },
+  heroBox: {
+    mobile: 'B4:K10',
+    sm: 'B6:O16',
+    md: 'B8:R20',
+    lg: 'B10:T30',
+    xl: 'B10:T23'
+  },
+  mercuryImage: {
+    mobile: 'E7:L12',
+    sm: 'J10:T20',
+    md: 'N14:AB28',
+    lg: 'T16:AL40',
+    xl: 'AB12:AL22'
+  }
+}
+
+// Viewport detection hook
+function useViewport(): Breakpoint {
+  const [viewport, setViewport] = useState<Breakpoint>('xl')
+
+  useEffect(() => {
+    function handleResize() {
+      const width = window.innerWidth
+      if (width < 640) {
+        setViewport('mobile')
+      } else if (width < 768) {
+        setViewport('sm')
+      } else if (width < 1024) {
+        setViewport('md')
+      } else if (width < 1280) {
+        setViewport('lg')
+      } else {
+        setViewport('xl')
+      }
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  return viewport
+}
+
+// Helper to get grid positioning styles from coordinate notation
+function getGridStyle(plotName: string, viewport: Breakpoint) {
+  const coord = GRID_PLOTS[plotName]?.[viewport]
+  if (!coord) return {}
+
+  const position = parseCoordinate(coord)
+  return {
+    gridColumn: `${position.col[0]} / ${position.col[1]}`,
+    gridRow: `${position.row[0]} / ${position.row[1]}`
+  }
+}
 
 export default function Home() {
+  const viewport = useViewport()
   return (
     <div className='min-h-screen bg-background text-foreground'>
       {/* Main Content */}
@@ -83,39 +196,37 @@ export default function Home() {
           </div>
         </header>
 
-        {/* Grid matching source.png EXACTLY */}
+        {/* Responsive Grid - scales from 12x12 on mobile to 46x22 on xl */}
         <div className='mb-8 relative bg-[#fafafa] border-[1px] border-black'>
+          {/* Background grid cells layer */}
           <div
-            className='grid'
+            className='responsive-grid absolute inset-0'
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(46, 1fr)',
-              gridTemplateRows: 'repeat(22, 1fr)',
-              width: '100%',
-              aspectRatio: '46 / 22'
+              gridTemplateColumns: `repeat(${GRID_CONFIG[viewport].cols}, 1fr)`,
+              gridTemplateRows: `repeat(${GRID_CONFIG[viewport].rows}, 1fr)`,
+              aspectRatio: `${GRID_CONFIG[viewport].cols} / ${GRID_CONFIG[viewport].rows}`
             }}
           >
-            {/* Grid cells */}
-            {Array.from({ length: 46 * 22 }).map((_, i) => (
-              <div
-                key={`cell-${i}`}
-                className='border-[1px] border-black'
-                style={{
-                  gridColumn: `${(i % 46) + 1} / ${(i % 46) + 2}`,
-                  gridRow: `${Math.floor(i / 46) + 1} / ${
-                    Math.floor(i / 46) + 2
-                  }`
-                }}
-              />
+            {Array.from({
+              length: GRID_CONFIG[viewport].cols * GRID_CONFIG[viewport].rows
+            }).map((_, i) => (
+              <div key={`cell-${i}`} className='grid-cell' />
             ))}
+          </div>
 
+          {/* Content layer */}
+          <div
+            className='responsive-grid relative'
+            style={{
+              gridTemplateColumns: `repeat(${GRID_CONFIG[viewport].cols}, 1fr)`,
+              gridTemplateRows: `repeat(${GRID_CONFIG[viewport].rows}, 1fr)`,
+              aspectRatio: `${GRID_CONFIG[viewport].cols} / ${GRID_CONFIG[viewport].rows}`
+            }}
+          >
             {/* VOLUME 1, ISSUE 1 box - top left */}
             <div
               className='bg-[#e8e8e8] relative z-10 flex items-center justify-center m-[1px]'
-              style={{
-                gridColumn: '2 / 10',
-                gridRow: '2 / 4'
-              }}
+              style={getGridStyle('volumeBox', viewport)}
             >
               <div className='text-[8px] sm:text-xs md:text-sm font-mono font-bold'>
                 VOLUME 1, ISSUE 1
@@ -125,10 +236,7 @@ export default function Home() {
             {/* Black hero box "The New Aesthetic of Progress" */}
             <div
               className='bg-black text-white p-2 sm:p-4 md:p-6 relative z-10 flex items-center'
-              style={{
-                gridColumn: '2 / 20',
-                gridRow: '5 / 16'
-              }}
+              style={getGridStyle('heroBox', viewport)}
             >
               <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-serif'>
                 The New
@@ -140,74 +248,47 @@ export default function Home() {
             </div>
 
             {/* Arrows section at bottom */}
-            <div
-              className='relative z-10 flex items-center gap-1 sm:gap-2 md:gap-3 px-1 sm:px-2'
-              style={{
-                gridColumn: '2 / 20',
-                gridRow: '17 / 19'
-              }}
-            >
+            {/* <div className='grid-arrow-section relative z-10 flex items-center gap-1 sm:gap-2 md:gap-3 px-1 sm:px-2'>
               <div className='text-sm sm:text-lg md:text-xl lg:text-2xl font-bold'>
                 &gt;&gt;&gt;&gt;&gt;
               </div>
               <div className='text-[8px] sm:text-[10px] md:text-xs'>
                 How American Dynamism reshaped the design language of startups.
               </div>
-            </div>
+            </div> */}
 
             {/* Top right decorative globe */}
-            <div
-              className='relative z-10 flex items-center justify-center bg-white m-[1px]'
-              style={{
-                gridColumn: '22 / 27',
-                gridRow: '2 / 5'
-              }}
-            >
-              {/* <img
+            {/* <div className='grid-globe-box relative z-10 flex items-center justify-center bg-white m-[1px]'>
+              <img
                 src='/globe.svg'
                 alt='Globe'
                 className='w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16'
-              /> */}
-            </div>
+              />
+            </div> */}
 
             {/* Right side gray box with N */}
-            <div
-              className='bg-gray-200 relative z-10'
-              style={{
-                gridColumn: '35 / 45',
-                gridRow: '2 / 10'
-              }}
-            >
+            {/* <div className='grid-n-box bg-gray-200 relative z-10'>
               <div className='absolute top-1 right-1 sm:top-2 sm:right-2 text-sm sm:text-xl md:text-2xl font-bold'>
                 N
               </div>
-            </div>
+            </div> */}
 
             {/* Y marker */}
-            <div
-              className='bg-black text-white relative z-10 flex items-center justify-center text-sm sm:text-lg md:text-xl font-bold'
-              style={{
-                gridColumn: '40 / 42',
-                gridRow: '11 / 13'
-              }}
-            >
+            {/* <div className='grid-y-marker bg-black text-white relative z-10 flex items-center justify-center text-sm sm:text-lg md:text-xl font-bold'>
               Y
-            </div>
+            </div> */}
 
             {/* Mercury image - positioned from bottom extending up */}
-            <div
+            {/* <div
               className='relative z-10 flex items-end justify-center overflow-hidden'
-              style={{
-                gridColumn: '28 / 38',
-                gridRow: '8 / 23'
-              }}
+              style={getGridStyle('mercuryImage', viewport)}
             >
               <img
                 src='/mercury.png'
                 alt='Mercury'
                 className='w-full h-auto object-contain object-bottom'
               />
-            </div>
+            </div> */}
 
             {/* Barcode */}
             {/* <div
@@ -229,15 +310,9 @@ export default function Home() {
             </div> */}
 
             {/* C marker bottom right */}
-            <div
-              className='relative z-10 flex items-center justify-center text-sm sm:text-xl md:text-2xl font-bold'
-              style={{
-                gridColumn: '43 / 45',
-                gridRow: '18 / 20'
-              }}
-            >
+            {/* <div className='grid-c-marker relative z-10 flex items-center justify-center text-sm sm:text-xl md:text-2xl font-bold'>
               C
-            </div>
+            </div> */}
           </div>
         </div>
 

@@ -9,6 +9,18 @@
     @apply max-w-6xl;
     @apply px-4 sm:px-6 md:px-8 py-6 md:py-8;
   }
+
+  /* Responsive Grid - dimensions controlled by TypeScript GRID_CONFIG */
+  .responsive-grid {
+    display: grid;
+    width: 100%;
+    max-width: 100%;
+    gap: 0;
+  }
+
+  .grid-cell {
+    border: 1px solid black;
+  }
 }
 
 @theme inline {
