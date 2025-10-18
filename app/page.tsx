@@ -621,17 +621,28 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Footer Checkered Pattern */}
-        <div className='border-t-4 border-primary pt-4'>
-          <div className='flex h-6 overflow-hidden'>
-            {Array.from({ length: 50 }).map((_, i) => (
-              <div
-                key={i}
-                className={`flex-1 ${i % 2 === 0 ? 'bg-primary' : 'bg-muted'}`}
-              />
-            ))}
+        {/* Footer */}
+        <footer className='border-t-2 border-primary pt-6 pb-8 mt-8'>
+          <div className='flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono'>
+            <div className='text-center md:text-left'>
+              <div className='font-bold'>© 2025 CHRIS WISNIEWSKI</div>
+              <div className='text-muted-foreground mt-1'>ALL RIGHTS RESERVED</div>
+            </div>
+            <div className='flex items-center gap-4'>
+              <a href='mailto:chriscoding@icloud.com' className='hover:underline'>
+                CONTACT
+              </a>
+              <span>•</span>
+              <a href='https://github.com/chriscodingxyz' target='_blank' rel='noopener noreferrer' className='hover:underline'>
+                GITHUB
+              </a>
+              <span>•</span>
+              <a href='https://twitter.com/chriscodingxyz' target='_blank' rel='noopener noreferrer' className='hover:underline'>
+                TWITTER
+              </a>
+            </div>
           </div>
-        </div>
+        </footer>
       </div>
     </div>
   )
