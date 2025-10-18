@@ -470,37 +470,15 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Subheader */}
-        <div className='py-2 mb-6 md:mb-8'>
-          <div className='flex justify-between items-center gap-2'>
-            <div className='flex items-center gap-2 md:gap-4 flex-1'>
-              <span className='text-base md:text-xl font-bold'>
-                &gt;&gt;&gt;&gt;&gt;
-              </span>
-              <span className='text-[10px] sm:text-xs md:text-sm font-mono'>
-                Featured Projects & Technical Achievements
-              </span>
-            </div>
-            <div className='hidden sm:flex flex-col items-center'>
-              <div className='text-xl md:text-3xl'>⦿</div>
-            </div>
-            <div className='flex flex-col items-center gap-1'>
-              <div className='font-mono text-xs flex gap-0.5'>
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className={`w-1 h-4 md:h-6 bg-background`}
-                    style={{ width: i % 2 === 0 ? '3px' : '1.5px' }}
-                  />
-                ))}
-              </div>
-              <div className='text-[10px] md:text-xs font-bold'>CW</div>
-            </div>
-          </div>
-        </div>
-
         {/* Projects Section */}
-        <div id='projects' className='grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8'>
+        <section id='projects' className='mb-6 md:mb-8'>
+          <div className='py-2 mb-4 md:mb-6'>
+            <h2 className='text-base md:text-xl font-bold font-mono'>
+              &gt;&gt;&gt;&gt;&gt; PROJECTS
+            </h2>
+          </div>
+
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4'>
           {/* Project 1 - Windows 98 */}
           <div className='border-2 border-primary group hover:bg-muted transition-colors'>
             <div className='aspect-video bg-primary overflow-hidden'>
@@ -602,115 +580,6 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </div>
-
-        {/* Experience Section */}
-        <section id='experience' className='mb-6 md:mb-8'>
-          <div className='py-2 mb-6 md:mb-8'>
-            <h2 className='text-base md:text-xl font-bold font-mono'>
-              &gt;&gt;&gt;&gt;&gt; EXPERIENCE
-            </h2>
-          </div>
-
-          {/* Timeline */}
-          <div className='relative'>
-            {/* Timeline items */}
-            <div className='relative grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4'>
-              {/* 2018-2022: IT Consultant */}
-              <div className='relative'>
-                <div className='flex flex-col items-center md:items-start'>
-                  {/* Dot */}
-                  <div className='w-3 h-3 bg-primary rounded-full border-2 border-background mb-3 relative z-10' />
-                  {/* Content */}
-                  <div className='text-center md:text-left'>
-                    <div className='text-[10px] md:text-xs font-mono font-bold mb-1'>
-                      2018 - 2022
-                    </div>
-                    <h3 className='text-xs md:text-sm font-bold font-mono mb-1'>
-                      IT Consultant
-                    </h3>
-                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
-                      MacSeven
-                    </p>
-                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
-                      London, UK
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2023: Junior Developer */}
-              <div className='relative'>
-                <div className='flex flex-col items-center md:items-start'>
-                  {/* Dot */}
-                  <div className='w-3 h-3 bg-primary rounded-full border-2 border-background mb-3 relative z-10' />
-                  {/* Content */}
-                  <div className='text-center md:text-left'>
-                    <div className='text-[10px] md:text-xs font-mono font-bold mb-1'>
-                      2023
-                    </div>
-                    <h3 className='text-xs md:text-sm font-bold font-mono mb-1'>
-                      Junior Developer
-                    </h3>
-                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
-                      NorthCoders
-                    </p>
-                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
-                      Remote, UK
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2023-2024: Freelance Developer */}
-              <div className='relative'>
-                <div className='flex flex-col items-center md:items-start'>
-                  {/* Dot */}
-                  <div className='w-3 h-3 bg-primary rounded-full border-2 border-background mb-3 relative z-10' />
-                  {/* Content */}
-                  <div className='text-center md:text-left'>
-                    <div className='text-[10px] md:text-xs font-mono font-bold mb-1'>
-                      2023 - 2024
-                    </div>
-                    <h3 className='text-xs md:text-sm font-bold font-mono mb-1'>
-                      Freelance Developer
-                    </h3>
-                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
-                      LittleCraftsLondon
-                    </p>
-                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
-                      Remote, UK
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2024-Present: Fullstack Developer */}
-              <div className='relative'>
-                <div className='flex flex-col items-center md:items-start'>
-                  {/* Animated dot for current position */}
-                  <div className='relative mb-3 z-10'>
-                    <div className='w-3 h-3 bg-green-500 rounded-full border-2 border-background animate-pulse' />
-                    <div className='absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-75' />
-                  </div>
-                  {/* Content */}
-                  <div className='text-center md:text-left'>
-                    <div className='text-[10px] md:text-xs font-mono font-bold mb-1 flex items-center justify-center md:justify-start gap-1'>
-                      2024 - PRESENT
-                    </div>
-                    <h3 className='text-xs md:text-sm font-bold font-mono mb-1'>
-                      Fullstack Developer
-                    </h3>
-                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
-                      27.works
-                    </p>
-                    <p className='text-[10px] md:text-xs text-muted-foreground font-mono'>
-                      Remote, UK
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
