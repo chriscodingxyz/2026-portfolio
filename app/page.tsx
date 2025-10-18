@@ -10,16 +10,16 @@ export default function Home() {
         {/* Header */}
         <header className='mb-4 md:mb-6'>
           {/* Top border section - matching source.png */}
-          <div className='border-t-2 border-b-2 md:border-t-4 md:border-b-4 border-black py-2 md:py-3 mb-4 md:mb-6'>
-            <div className='flex flex-col lg:flex-row justify-between items-center lg:items-start gap-2 lg:gap-0'>
+          <div className='border-t-2 border-b-2 md:border-t-2 md:border-b-4 border-black py-2 md:py-3 mb-4 md:mb-6'>
+            <div className='flex lg:flex-row justify-between items-center lg:items-start gap-2 lg:gap-0'>
               <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono'>
                 ISSUE #420
               </div>
               <div className='text-[10px] md:text-xs uppercase tracking-wider text-center flex-1 font-mono'>
-                FULLSTACK ENGINEER • BUILDER • INNOVATOR
+                FULLSTACK ENGINEER
               </div>
-              <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono'>
-                EST. 2024
+              <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono grayscale'>
+                London, UK
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@ export default function Home() {
             className='text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] leading-none text-center mb-2'
             style={{ fontFamily: 'var(--font-chomsky)' }}
           >
-            The Chronicle Times
+            Chris Wisniewski
           </h1>
 
           <div className='flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-[10px] md:text-xs font-mono mt-4'>
@@ -64,7 +64,7 @@ export default function Home() {
         </header>
 
         {/* Grid matching source.png EXACTLY */}
-        <div className='hidden lg:block mb-8 relative bg-[#fafafa] border-[0.5px] border-black'>
+        <div className='mb-8 relative bg-[#fafafa] border-[0.5px] border-black'>
           <div
             className='grid'
             style={{
@@ -97,20 +97,20 @@ export default function Home() {
                 gridRow: '2 / 4'
               }}
             >
-              <div className='text-sm font-mono font-bold'>
+              <div className='text-[8px] sm:text-xs md:text-sm font-mono font-bold'>
                 VOLUME 1, ISSUE 1
               </div>
             </div>
 
             {/* Black hero box "The New Aesthetic of Progress" */}
             <div
-              className='bg-black text-white p-6 relative z-10 flex items-center'
+              className='bg-black text-white p-2 sm:p-4 md:p-6 relative z-10 flex items-center'
               style={{
                 gridColumn: '2 / 20',
                 gridRow: '5 / 16'
               }}
             >
-              <h2 className='text-5xl leading-tight font-serif'>
+              <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-serif'>
                 The New
                 <br />
                 Aesthetic of
@@ -121,29 +121,33 @@ export default function Home() {
 
             {/* Arrows section at bottom */}
             <div
-              className='relative z-10 flex items-center gap-3 px-2'
+              className='relative z-10 flex items-center gap-1 sm:gap-2 md:gap-3 px-1 sm:px-2'
               style={{
                 gridColumn: '2 / 20',
                 gridRow: '17 / 19'
               }}
             >
-              <div className='text-2xl font-bold'>&gt;&gt;&gt;&gt;&gt;</div>
-              <div className='text-xs'>
+              <div className='text-sm sm:text-lg md:text-xl lg:text-2xl font-bold'>
+                &gt;&gt;&gt;&gt;&gt;
+              </div>
+              <div className='text-[8px] sm:text-[10px] md:text-xs'>
                 How American Dynamism reshaped the design language of startups.
               </div>
             </div>
 
-            {/* Top right decorative circle */}
+            {/* Top right decorative globe */}
             <div
-              className='relative z-10 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center bg-white m-[0.5px]'
               style={{
                 gridColumn: '22 / 27',
                 gridRow: '2 / 5'
               }}
             >
-              <div className='w-16 h-16 border-4 border-black rounded-full flex items-center justify-center'>
-                <div className='w-10 h-10 border-2 border-black rounded-full'></div>
-              </div>
+              {/* <img
+                src='/globe.svg'
+                alt='Globe'
+                className='w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16'
+              /> */}
             </div>
 
             {/* Right side gray box with N */}
@@ -154,12 +158,14 @@ export default function Home() {
                 gridRow: '2 / 10'
               }}
             >
-              <div className='absolute top-2 right-2 text-2xl font-bold'>N</div>
+              <div className='absolute top-1 right-1 sm:top-2 sm:right-2 text-sm sm:text-xl md:text-2xl font-bold'>
+                N
+              </div>
             </div>
 
             {/* Y marker */}
             <div
-              className='bg-black text-white relative z-10 flex items-center justify-center text-xl font-bold'
+              className='bg-black text-white relative z-10 flex items-center justify-center text-sm sm:text-lg md:text-xl font-bold'
               style={{
                 gridColumn: '40 / 42',
                 gridRow: '11 / 13'
@@ -184,100 +190,33 @@ export default function Home() {
             </div>
 
             {/* Barcode */}
-            <div
+            {/* <div
               className='bg-black relative z-10 flex items-center justify-center'
               style={{
                 gridColumn: '24 / 32',
                 gridRow: '17 / 19'
               }}
             >
-              <div className='flex gap-[2px] h-8'>
+              <div className='flex gap-[1px] sm:gap-[2px] h-4 sm:h-6 md:h-8'>
                 {[3, 1, 3, 1, 2, 3, 1, 3, 2, 1, 3, 1].map((width, i) => (
                   <div
                     key={i}
                     className='bg-white'
-                    style={{ width: `${width * 2}px` }}
+                    style={{ width: `${width * 1}px` }}
                   />
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* C marker bottom right */}
             <div
-              className='relative z-10 flex items-center justify-center text-2xl font-bold'
+              className='relative z-10 flex items-center justify-center text-sm sm:text-xl md:text-2xl font-bold'
               style={{
                 gridColumn: '43 / 45',
                 gridRow: '18 / 20'
               }}
             >
               C
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Layout - Stack boxes without grid */}
-        <div className='lg:hidden space-y-6 mb-8'>
-          {/* Volume Info Box */}
-          <div className='bg-white border-2 border-black p-6 text-center space-y-4'>
-            <div className='text-sm uppercase tracking-wider font-mono'>
-              2026 EDITION
-            </div>
-            <div className='border-t border-black pt-4'>
-              <div className='text-xs uppercase tracking-wider font-mono mb-2'>
-                STATUS
-              </div>
-              <div className='text-green-600 font-mono text-xs'>
-                ● AVAILABLE
-              </div>
-            </div>
-            <div className='border-t border-black pt-4'>
-              <div className='text-xs uppercase tracking-wider font-mono mb-2'>
-                SPECIALTIES
-              </div>
-              <div className='text-xs space-y-1'>
-                <div>React/Next.js</div>
-                <div>TypeScript</div>
-                <div>Node.js</div>
-                <div>UI/UX</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Hero Black Box */}
-          <div className='bg-black text-white p-10'>
-            <h2 className='text-4xl leading-[1.1] font-serif'>
-              Building
-              <br />
-              the Future,
-              <br />
-              <span className='italic'>One Line at a Time</span>
-            </h2>
-          </div>
-
-          {/* Profile Box */}
-          <div className='border-2 border-black p-8 bg-gray-50 relative'>
-            <div className='absolute top-4 right-4 text-xs font-mono bg-black text-white px-2 py-1'>
-              DEV
-            </div>
-            <div className='flex flex-col justify-center items-center space-y-4 py-8'>
-              <div className='text-5xl'>👨‍💻</div>
-              <div className='text-center space-y-2'>
-                <div className='font-bold text-xl'>Chris Wiz</div>
-                <div className='text-xs font-mono'>FULLSTACK ENGINEER</div>
-                <div className='flex justify-center gap-2 mt-2'>
-                  <div className='w-2 h-2 bg-black'></div>
-                  <div className='w-2 h-2 bg-black'></div>
-                  <div className='w-2 h-2 bg-black'></div>
-                </div>
-              </div>
-              <a
-                href='https://cherrydub98.vercel.app'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-xs font-mono hover:underline border border-black px-4 py-2 bg-white'
-              >
-                Windows 98 Project →
-              </a>
             </div>
           </div>
         </div>
