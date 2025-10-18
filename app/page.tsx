@@ -20,12 +20,13 @@ import {
   VercelIcon,
   ResendIcon
 } from '@/components/TechIcons'
+import { NewspaperThemeToggle } from '@/components/newspaper-theme-toggle'
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-[#fafafa] text-black'>
+    <div className='min-h-screen bg-background text-foreground'>
       {/* Main Content */}
-      <div className='max-w-6xl mx-auto p-8'>
+      <div className='container p-8'>
         {/* Header */}
         <header className='mb-4 md:mb-6'>
           {/* Top border section - matching source.png */}
@@ -37,8 +38,8 @@ export default function Home() {
               <div className='text-[10px] md:text-xs uppercase tracking-wider text-center flex-1 font-mono'>
                 FULLSTACK ENGINEER
               </div>
-              <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono grayscale'>
-                London, UK
+              <div className='flex items-center'>
+                <NewspaperThemeToggle />
               </div>
             </div>
           </div>

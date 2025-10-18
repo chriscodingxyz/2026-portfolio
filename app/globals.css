@@ -3,6 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@layer base {
+  .container {
+    @apply mx-auto;
+    max-width: 80rem;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
