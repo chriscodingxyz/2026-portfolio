@@ -26,10 +26,10 @@ import { useEffect, useState } from 'react'
 // Grid configuration per viewport
 const GRID_CONFIG = {
   mobile: { cols: 17, rows: 12 },
-  sm: { cols: 20, rows: 20 },
-  md: { cols: 28, rows: 28 },
-  lg: { cols: 40, rows: 40 },
-  xl: { cols: 46, rows: 22 }
+  sm: { cols: 20, rows: 18 },
+  md: { cols: 28, rows: 18 },
+  lg: { cols: 40, rows: 18 },
+  xl: { cols: 46, rows: 16 }
 } as const
 
 // Viewport breakpoints
@@ -72,25 +72,46 @@ function parseCoordinate(coord: string): {
 // Define plot coordinates for each element at each viewport
 const GRID_PLOTS: Record<string, Record<Breakpoint, string>> = {
   volumeBox: {
-    mobile: 'B2:I3',
+    mobile: 'B2:F2',
     sm: 'B2:J2',
-    md: 'B2:J5',
-    lg: 'B2:J5',
-    xl: 'B2:J5'
+    md: 'B2:J2',
+    lg: 'B2:J2',
+    xl: 'B2:J2'
   },
   heroBox: {
-    mobile: 'B4:K10',
-    sm: 'B6:O16',
-    md: 'B8:R20',
-    lg: 'B10:T30',
-    xl: 'B10:T23'
+    mobile: 'B4:H9',
+    sm: 'B4:O12',
+    md: 'B4:R12',
+    lg: 'B4:T12',
+    xl: 'B4:T10'
   },
   mercuryImage: {
-    mobile: 'E7:L12',
-    sm: 'J10:T20',
-    md: 'N14:AB28',
-    lg: 'T16:AL40',
-    xl: 'AB12:AL22'
+    mobile: 'J6:N12',
+    sm: 'J8:T18',
+    md: 'N8:AB18',
+    lg: 'T8:AL18',
+    xl: 'AB6:AL16'
+  },
+  msagentImage: {
+    mobile: 'L2:M3',
+    sm: 'L2:M3',
+    md: 'L2:M3',
+    lg: 'L2:M3',
+    xl: 'L2:M3'
+  },
+  cryptoadzImage: {
+    mobile: 'B11:F12',
+    sm: 'B14:F18',
+    md: 'B14:F18',
+    lg: 'B14:F18',
+    xl: 'B12:F16'
+  },
+  avatarImage: {
+    mobile: 'K2:O3',
+    sm: 'Q2:U6',
+    md: 'T2:X6',
+    lg: 'V2:Z6',
+    xl: 'V2:Z6'
   }
 }
 
@@ -231,7 +252,7 @@ export default function Home() {
           >
             {/* VOLUME 1, ISSUE 1 box - top left */}
             <div
-              className='bg-[#e8e8e8] relative z-10 flex items-center justify-center m-[1px]'
+              className='bg-muted relative z-10 flex items-center justify-center m-[1px]'
               style={getGridStyle('volumeBox', viewport)}
             >
               <div className='text-[8px] sm:text-xs md:text-sm font-mono font-bold'>
@@ -285,7 +306,7 @@ export default function Home() {
             </div> */}
 
             {/* Mercury image - positioned from bottom extending up */}
-            {/* <div
+            <div
               className='relative z-10 flex items-end justify-center overflow-hidden'
               style={getGridStyle('mercuryImage', viewport)}
             >
@@ -294,7 +315,43 @@ export default function Home() {
                 alt='Mercury'
                 className='w-full h-auto object-contain object-bottom'
               />
-            </div> */}
+            </div>
+
+            {/* MS Agent detective */}
+            <div
+              className='relative z-10 flex items-center justify-center overflow-hidden m-[1px]'
+              style={getGridStyle('msagentImage', viewport)}
+            >
+              <img
+                src='/msagent-4.png'
+                alt='MS Agent'
+                className='w-full h-auto object-contain pixelated'
+              />
+            </div>
+
+            {/* Cryptoadz GIF */}
+            <div
+              className='relative z-10 flex items-end justify-center overflow-hidden m-[1px]'
+              style={getGridStyle('cryptoadzImage', viewport)}
+            >
+              <img
+                src='/cryptoadz.gif'
+                alt='Cryptoadz'
+                className='w-full h-auto object-contain object-bottom pixelated'
+              />
+            </div>
+
+            {/* Avatar */}
+            <div
+              className='relative z-10 flex items-center justify-center overflow-hidden m-[1px]'
+              style={getGridStyle('avatarImage', viewport)}
+            >
+              <img
+                src='/avatar.png'
+                alt='Avatar'
+                className='w-full h-auto object-contain pixelated'
+              />
+            </div>
 
             {/* Barcode */}
             {/* <div
@@ -460,137 +517,105 @@ export default function Home() {
         </div>
 
         {/* Projects Section */}
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8'>
-          {/* Project 1 */}
-          <div>
-            <div className='flex justify-between items-center mb-3 md:mb-4'>
-              <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono'>
-                FEATURED PROJECT
-              </div>
-              <div className='text-[10px] md:text-xs font-mono'>LIVE</div>
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8'>
+          {/* Project 1 - Windows 98 */}
+          <div className='border-2 border-primary group hover:bg-muted transition-colors'>
+            <div className='aspect-video bg-primary overflow-hidden'>
+              <img
+                src='/project-98.png'
+                alt='Windows 98 Recreation'
+                className='w-full h-full object-cover'
+              />
             </div>
-
-            <h3 className='text-2xl md:text-3xl font-serif leading-tight mb-4 md:mb-6'>
-              Windows 98
-              <br />
-              Recreation Project
-            </h3>
-
-            {/* Terminal Box */}
-            <div className='bg-background text-green-400 p-4 md:p-6 font-mono text-[10px] md:text-xs mb-4'>
-              <div className='mb-3 md:mb-4 text-right text-gray-500'>
-                DEPLOYED
+            <div className='p-2 md:p-3'>
+              <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
+                FEATURED • LIVE
               </div>
-              <div className='space-y-1'>
-                <div>[ BUILD LOG ]</div>
-                <div>&gt; npm run build</div>
-                <div>
-                  &gt; Next.js ...{' '}
-                  <span className='text-white font-bold'>✓</span>
-                </div>
-                <div>
-                  &gt; TypeScript ...{' '}
-                  <span className='text-white font-bold'>✓</span>
-                </div>
-                <div>
-                  &gt; Tailwind CSS ...{' '}
-                  <span className='text-white font-bold'>✓</span>
-                </div>
-                <div>
-                  &gt; Deployment ...{' '}
-                  <span className='text-white font-bold'>SUCCESS</span>
-                </div>
-              </div>
-              <div className='mt-4 md:mt-6 text-center text-lg md:text-2xl font-bold tracking-wider'>
-                {'{'}RUNNING{'}'}
-              </div>
-            </div>
-
-            <p className='text-xs md:text-sm leading-relaxed mb-4'>
-              A nostalgic recreation of the iconic Windows 98 interface, built
-              with modern web technologies. Features include draggable windows,
-              a functional start menu, classic applications like Minesweeper and
-              Notepad, and authentic system sounds. Deployed on Vercel with full
-              responsive support.
-            </p>
-
-            <a
-              href='https://cherrydub98.vercel.app'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='inline-block border-2 border-primary px-3 md:px-4 py-2 text-[10px] md:text-xs font-mono hover:bg-background hover:text-white transition-colors'
-            >
-              VIEW PROJECT →
-            </a>
-          </div>
-
-          {/* Project 2 - Portfolio Showcase */}
-          <div>
-            <div className='flex justify-between items-center mb-3 md:mb-4'>
-              <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono'>
-                TECH STACK & SKILLS
-              </div>
-              <div className='text-[10px] md:text-xs font-mono'>2026</div>
-            </div>
-
-            <h3 className='text-2xl md:text-3xl font-serif leading-tight mb-4 md:mb-6'>
-              Modern Development
-              <br />
-              Arsenal
-            </h3>
-
-            {/* Tech Stack Visual */}
-            <div className='bg-background text-white p-4 md:p-6 font-mono text-[10px] md:text-xs mb-4'>
-              <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-                <div className='space-y-2'>
-                  <div className='text-blue-400'>// FRONTEND</div>
-                  <div className='pl-4 space-y-1'>
-                    <div>→ React</div>
-                    <div>→ Next.js</div>
-                    <div>→ TypeScript</div>
-                    <div>→ Tailwind CSS</div>
-                  </div>
-                </div>
-                <div className='space-y-2'>
-                  <div className='text-green-400'>// BACKEND</div>
-                  <div className='pl-4 space-y-1'>
-                    <div>→ Node.js</div>
-                    <div>→ PostgreSQL</div>
-                    <div>→ Drizzle ORM</div>
-                    <div>→ Supabase</div>
-                  </div>
-                </div>
-              </div>
-              <div className='mt-4 pt-4 border-t border-gray-700'>
-                <div className='text-yellow-400'>// TOOLS</div>
-                <div className='pl-4 mt-1 space-y-1'>
-                  <div>→ Docker • Vercel • Claude AI • Better Auth</div>
-                </div>
-              </div>
-            </div>
-
-            <p className='text-xs md:text-sm leading-relaxed mb-4'>
-              Specialized in building modern, performant web applications with a
-              focus on user experience and clean code. Proficient in full-stack
-              development, with expertise in React ecosystem, TypeScript, and
-              Node.js. Passionate about creating intuitive interfaces and
-              scalable architectures.
-            </p>
-
-            <div className='flex flex-col sm:flex-row gap-3 md:gap-4'>
+              <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
+                Windows 98 Recreation
+              </h3>
               <a
-                href='https://github.com/chriscodingxyz'
+                href='https://cherrydub98.vercel.app'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='inline-block border-2 border-primary px-3 md:px-4 py-2 text-[10px] md:text-xs font-mono hover:bg-background hover:text-white transition-colors text-center'
+                className='text-[8px] md:text-[10px] font-mono hover:underline'
               >
-                GITHUB →
+                VIEW →
               </a>
+            </div>
+          </div>
+
+          {/* Project 2 - Cherry NFT */}
+          <div className='border-2 border-primary group hover:bg-muted transition-colors'>
+            <div className='aspect-video bg-primary overflow-hidden'>
+              <img
+                src='/project-nft.png'
+                alt='Cherry NFT Dashboard'
+                className='w-full h-full object-cover'
+              />
+            </div>
+            <div className='p-2 md:p-3'>
+              <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
+                NFT • WEB3
+              </div>
+              <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
+                NFT Analytics Dashboard
+              </h3>
               <a
-                href='mailto:chriscoding@icloud.com'
-                className='inline-block border-2 border-primary px-3 md:px-4 py-2 text-[10px] md:text-xs font-mono hover:bg-background hover:text-white transition-colors text-center'
+                href='#'
+                className='text-[8px] md:text-[10px] font-mono hover:underline'
               >
-                CONTACT →
+                VIEW →
+              </a>
+            </div>
+          </div>
+
+          {/* Project 3 - Evento */}
+          <div className='border-2 border-primary group hover:bg-muted transition-colors'>
+            <div className='aspect-video bg-primary overflow-hidden'>
+              <img
+                src='/project-evento.png'
+                alt='Evento Platform'
+                className='w-full h-full object-cover'
+              />
+            </div>
+            <div className='p-2 md:p-3'>
+              <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
+                EVENTS • SAAS
+              </div>
+              <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
+                Event Management Platform
+              </h3>
+              <a
+                href='#'
+                className='text-[8px] md:text-[10px] font-mono hover:underline'
+              >
+                VIEW →
+              </a>
+            </div>
+          </div>
+
+          {/* Project 4 - rmtDev */}
+          <div className='border-2 border-primary group hover:bg-muted transition-colors'>
+            <div className='aspect-video bg-primary overflow-hidden'>
+              <img
+                src='/project-rmtdev.png'
+                alt='rmtDev Job Board'
+                className='w-full h-full object-cover'
+              />
+            </div>
+            <div className='p-2 md:p-3'>
+              <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
+                JOBS • DEMO
+              </div>
+              <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
+                Remote Developer Jobs
+              </h3>
+              <a
+                href='#'
+                className='text-[8px] md:text-[10px] font-mono hover:underline'
+              >
+                VIEW →
               </a>
             </div>
           </div>
@@ -602,9 +627,7 @@ export default function Home() {
             {Array.from({ length: 50 }).map((_, i) => (
               <div
                 key={i}
-                className={`flex-1 ${
-                  i % 2 === 0 ? 'bg-background' : 'bg-white'
-                }`}
+                className={`flex-1 ${i % 2 === 0 ? 'bg-primary' : 'bg-muted'}`}
               />
             ))}
           </div>

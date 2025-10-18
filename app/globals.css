@@ -21,6 +21,12 @@
   .grid-cell {
     border: 1px solid var(--primary);
   }
+
+  .pixelated {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
 }
 
 @theme inline {
