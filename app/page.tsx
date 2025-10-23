@@ -29,7 +29,7 @@ const GRID_CONFIG = {
   sm: { cols: 20, rows: 18 },
   md: { cols: 28, rows: 18 },
   lg: { cols: 40, rows: 18 },
-  xl: { cols: 46, rows: 16 }
+  xl: { cols: 42, rows: 16 }
 } as const
 
 // Viewport breakpoints
@@ -79,40 +79,40 @@ const GRID_PLOTS: Record<string, Record<Breakpoint, string>> = {
     xl: 'B2:J2'
   },
   heroBox: {
-    mobile: 'B4:H9',
+    mobile: 'B3:H7',
     sm: 'B4:O12',
     md: 'B4:R12',
     lg: 'B4:T12',
     xl: 'B4:T10'
   },
   mercuryImage: {
-    mobile: 'J6:N12',
+    mobile: 'L6:O12',
     sm: 'J8:T18',
     md: 'N8:AB18',
     lg: 'T8:AL18',
-    xl: 'AB6:AL16'
+    xl: 'AD6:AL16'
   },
   msagentImage: {
-    mobile: 'L2:M3',
+    mobile: 'G6:H7',
     sm: 'L2:M3',
     md: 'L2:M3',
     lg: 'L2:M3',
-    xl: 'L2:M3'
+    xl: 'O2:P16'
   },
   cryptoadzImage: {
-    mobile: 'B11:F12',
+    mobile: 'B8:F12',
     sm: 'B14:F18',
     md: 'B14:F18',
     lg: 'B14:F18',
     xl: 'B12:F16'
-  },
-  avatarImage: {
-    mobile: 'K2:O3',
-    sm: 'Q2:U6',
-    md: 'T2:X6',
-    lg: 'V2:Z6',
-    xl: 'V2:Z6'
   }
+  // avatarImage: {
+  //   mobile: 'K2:O3',
+  //   sm: 'Q2:U6',
+  //   md: 'T2:X6',
+  //   lg: 'V2:Z6',
+  //   xl: 'V2:Z6'
+  // }
 }
 
 // Viewport detection hook
@@ -158,13 +158,13 @@ function getGridStyle(plotName: string, viewport: Breakpoint) {
 export default function Home() {
   const viewport = useViewport()
   return (
-    <div className='min-h-screen bg-background text-foreground grayscale'>
+    <div className='min-h-screen bg-background text-foreground'>
       {/* Main Content */}
       <div className='container'>
         {/* Header */}
         <header className='mb-4 md:mb-6'>
           {/* Top border section - matching source.png */}
-          <div className='border-b-2 border-t-2 border-primary py-2 md:py-3 mb-4 md:mb-6'>
+          <div className='py-2 md:py-3 mb-4 md:mb-6'>
             <div className='flex lg:flex-row justify-between items-center lg:items-start gap-2 lg:gap-0'>
               <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono'>
                 {new Date()
@@ -177,7 +177,7 @@ export default function Home() {
               </div>
               <nav className='text-[10px] md:text-xs uppercase tracking-wider text-center flex-1 font-mono'>
                 <div className='flex items-center justify-center gap-3 md:gap-6'>
-                  <a href='#tech-stack' className='hover:underline'>
+                  {/* <a href='#tech-stack' className='hover:underline'>
                     Tech Stack
                   </a>
                   <span>•</span>
@@ -187,7 +187,7 @@ export default function Home() {
                   <span>•</span>
                   <a href='#experience' className='hover:underline'>
                     Experience
-                  </a>
+                  </a> */}
                 </div>
               </nav>
               <div className='flex items-center'>
@@ -197,17 +197,16 @@ export default function Home() {
           </div>
 
           {/* Newspaper Title */}
-          <h1
+          {/* <h1
             className='text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] leading-none text-center mb-2'
             style={{ fontFamily: 'var(--font-chomsky)' }}
           >
             Chris Wisniewski
-          </h1>
-
+          </h1> */}
         </header>
 
         {/* Responsive Grid - scales from 12x12 on mobile to 46x22 on xl */}
-        <div className='mb-8 relative  border-[1px] border-primary'>
+        <div className='mb-8 relative  border-[0.5px] border-primary/50'>
           {/* Background grid cells layer */}
           <div
             className='responsive-grid absolute inset-0'
@@ -220,7 +219,10 @@ export default function Home() {
             {Array.from({
               length: GRID_CONFIG[viewport].cols * GRID_CONFIG[viewport].rows
             }).map((_, i) => (
-              <div key={`cell-${i}`} className='grid-cell' />
+              <div
+                key={`cell-${i}`}
+                className='border-[0.5px] border-primary/50'
+              />
             ))}
           </div>
 
@@ -234,26 +236,26 @@ export default function Home() {
             }}
           >
             {/* VOLUME 1, ISSUE 1 box - top left */}
-            <div
-              className='bg-muted relative z-10 flex items-center justify-center m-[1px]'
+            {/* <div
+              className='bg-muted relative z-10 flex items-center justify-center'
               style={getGridStyle('volumeBox', viewport)}
             >
               <div className='text-[8px] sm:text-xs md:text-sm font-mono font-bold'>
-                VOLUME 1, ISSUE 1
+                LONDON, UK
               </div>
-            </div>
+            </div> */}
 
             {/* Black hero box "The New Aesthetic of Progress" */}
             <div
-              className='bg-primary text-background p-2 sm:p-4 md:p-6 relative z-10 flex items-center m-[1px]'
+              className='bg-primary text-background p-2 sm:p-4 md:p-6 relative z-10 flex items-center'
               style={getGridStyle('heroBox', viewport)}
             >
-              <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-serif'>
-                The New
+              <h2 className='text-2xl sm:text-3xl md:text-3xl lg:text-4xl leading-tight font-serif'>
+                React / Next.js
                 <br />
-                Aesthetic of
+                Fullstack
                 <br />
-                <span className='italic'>Progress</span>
+                <span className='italic'>Developer</span>
               </h2>
             </div>
 
@@ -302,7 +304,7 @@ export default function Home() {
 
             {/* MS Agent detective */}
             <div
-              className='relative z-10 flex items-center justify-center overflow-hidden m-[1px]'
+              className='relative z-10 flex items-center justify-center overflow-hidden'
               style={getGridStyle('msagentImage', viewport)}
             >
               <img
@@ -314,7 +316,7 @@ export default function Home() {
 
             {/* Cryptoadz GIF */}
             <div
-              className='relative z-10 flex items-end justify-center overflow-hidden m-[1px]'
+              className='relative z-10 flex items-end justify-center overflow-hidden'
               style={getGridStyle('cryptoadzImage', viewport)}
             >
               <img
@@ -325,7 +327,7 @@ export default function Home() {
             </div>
 
             {/* Avatar */}
-            <div
+            {/* <div
               className='relative z-10 flex items-center justify-center overflow-hidden m-[1px]'
               style={getGridStyle('avatarImage', viewport)}
             >
@@ -334,7 +336,7 @@ export default function Home() {
                 alt='Avatar'
                 className='w-full h-auto object-contain pixelated'
               />
-            </div>
+            </div> */}
 
             {/* Barcode */}
             {/* <div
@@ -362,107 +364,117 @@ export default function Home() {
           </div>
         </div>
 
+        <div className='py-2 mb-2'>
+          <h2 className='text-base md:text-xl font-bold font-mono'>
+            {/* &gt;&gt;&gt;&gt;&gt; PROJECTS */}
+            TECH STACK
+          </h2>
+        </div>
+
         {/* Tech Icons Grid - Single Row */}
-        <div id='tech-stack' className='border-1 border-primary mb-6 md:mb-8'>
+        <div
+          id='tech-stack'
+          className='border-[0.5px] border-primary/50 mb-6 md:mb-8'
+        >
           <div className='grid grid-cols-17 gap-0'>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='React'
             >
               <ReactIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Next.js'
             >
               <Nextjs className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='TypeScript'
             >
               <TypeScript className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Tailwind CSS'
             >
               <TailwindCSS className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Node.js'
             >
               <Nodejs className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='PostgreSQL'
             >
               <PostgreSQL className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Drizzle ORM'
             >
               <DrizzleORM className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Supabase'
             >
               <Supabase className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='React Query'
             >
               <ReactQuery className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Better Auth'
             >
               <BetterAuth className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='shadcn/ui'
             >
               <Shadcnui className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Docker'
             >
               <Docker className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Vercel'
             >
               <VercelIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='GitHub'
             >
               <GithubIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Claude AI'
             >
               <ClaudeAI className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Resend'
             >
               <ResendIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-1 border-primary p-1 flex items-center justify-center'
+              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
               title='Stripe'
             >
               <Stripe className='w-3 h-3 md:w-4 md:h-4' />
@@ -472,130 +484,133 @@ export default function Home() {
 
         {/* Projects Section */}
         <section id='projects' className='mb-6 md:mb-8'>
-          <div className='py-2 mb-4 md:mb-6'>
+          <div className='py-2 mb-2'>
             <h2 className='text-base md:text-xl font-bold font-mono'>
-              &gt;&gt;&gt;&gt;&gt; PROJECTS
+              {/* &gt;&gt;&gt;&gt;&gt; PROJECTS */}
+              PROJECTS
             </h2>
           </div>
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4'>
-          {/* Project 1 - Windows 98 */}
-          <div className='border-2 border-primary group hover:bg-muted transition-colors'>
-            <div className='aspect-video bg-primary overflow-hidden'>
-              <img
-                src='/project-98.png'
-                alt='Windows 98 Recreation'
-                className='w-full h-full object-cover'
-              />
-            </div>
-            <div className='p-2 md:p-3'>
-              <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
-                FEATURED • LIVE
+          <div className='grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4'>
+            {/* Project 1 - Windows 98 */}
+            <div className='border-[0.5px] border-primary/50 group hover:bg-muted transition-colors'>
+              <div className='aspect-video bg-primary overflow-hidden'>
+                <img
+                  src='/project-98.png'
+                  alt='Windows 98 Recreation'
+                  className='w-full h-full object-cover'
+                />
               </div>
-              <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
-                Windows 98 Recreation
-              </h3>
-              <a
-                href='https://cherrydub98.vercel.app'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-[8px] md:text-[10px] font-mono hover:underline'
-              >
-                VIEW →
-              </a>
+              <div className='p-2 md:p-3'>
+                <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
+                  FEATURED • LIVE
+                </div>
+                <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
+                  Windows 98 Recreation
+                </h3>
+                <a
+                  href='https://cherrydub98.vercel.app'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='text-[8px] md:text-[10px] font-mono hover:underline'
+                >
+                  VIEW →
+                </a>
+              </div>
             </div>
-          </div>
 
-          {/* Project 2 - Cherry NFT */}
-          <div className='border-2 border-primary group hover:bg-muted transition-colors'>
-            <div className='aspect-video bg-primary overflow-hidden'>
-              <img
-                src='/project-nft.png'
-                alt='Cherry NFT Dashboard'
-                className='w-full h-full object-cover'
-              />
-            </div>
-            <div className='p-2 md:p-3'>
-              <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
-                NFT • WEB3
+            {/* Project 2 - Cherry NFT */}
+            <div className='border-[0.5px] border-primary/50 group hover:bg-muted transition-colors'>
+              <div className='aspect-video bg-primary overflow-hidden'>
+                <img
+                  src='/project-nft.png'
+                  alt='Cherry NFT Dashboard'
+                  className='w-full h-full object-cover'
+                />
               </div>
-              <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
-                NFT Analytics Dashboard
-              </h3>
-              <a
-                href='#'
-                className='text-[8px] md:text-[10px] font-mono hover:underline'
-              >
-                VIEW →
-              </a>
+              <div className='p-2 md:p-3'>
+                <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
+                  NFT • WEB3
+                </div>
+                <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
+                  NFT Analytics Dashboard
+                </h3>
+                <a
+                  href='#'
+                  className='text-[8px] md:text-[10px] font-mono hover:underline'
+                >
+                  VIEW →
+                </a>
+              </div>
             </div>
-          </div>
 
-          {/* Project 3 - Evento */}
-          <div className='border-2 border-primary group hover:bg-muted transition-colors'>
-            <div className='aspect-video bg-primary overflow-hidden'>
-              <img
-                src='/project-evento.png'
-                alt='Evento Platform'
-                className='w-full h-full object-cover'
-              />
-            </div>
-            <div className='p-2 md:p-3'>
-              <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
-                EVENTS • SAAS
+            {/* Project 3 - Evento */}
+            <div className='border-[0.5px] border-primary/50 group hover:bg-muted transition-colors'>
+              <div className='aspect-video bg-primary overflow-hidden'>
+                <img
+                  src='/project-evento.png'
+                  alt='Evento Platform'
+                  className='w-full h-full object-cover'
+                />
               </div>
-              <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
-                Event Management Platform
-              </h3>
-              <a
-                href='#'
-                className='text-[8px] md:text-[10px] font-mono hover:underline'
-              >
-                VIEW →
-              </a>
+              <div className='p-2 md:p-3'>
+                <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
+                  EVENTS • SAAS
+                </div>
+                <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
+                  Event Management Platform
+                </h3>
+                <a
+                  href='#'
+                  className='text-[8px] md:text-[10px] font-mono hover:underline'
+                >
+                  VIEW →
+                </a>
+              </div>
             </div>
-          </div>
 
-          {/* Project 4 - rmtDev */}
-          <div className='border-2 border-primary group hover:bg-muted transition-colors'>
-            <div className='aspect-video bg-primary overflow-hidden'>
-              <img
-                src='/project-rmtdev.png'
-                alt='rmtDev Job Board'
-                className='w-full h-full object-cover'
-              />
-            </div>
-            <div className='p-2 md:p-3'>
-              <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
-                JOBS • DEMO
+            {/* Project 4 - rmtDev */}
+            <div className='border-[0.5px] border-primary/50 group hover:bg-muted transition-colors'>
+              <div className='aspect-video bg-primary overflow-hidden'>
+                <img
+                  src='/project-rmtdev.png'
+                  alt='rmtDev Job Board'
+                  className='w-full h-full object-cover'
+                />
               </div>
-              <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
-                Remote Developer Jobs
-              </h3>
-              <a
-                href='#'
-                className='text-[8px] md:text-[10px] font-mono hover:underline'
-              >
-                VIEW →
-              </a>
+              <div className='p-2 md:p-3'>
+                <div className='text-[8px] md:text-[10px] font-mono mb-1 uppercase tracking-wide'>
+                  JOBS • DEMO
+                </div>
+                <h3 className='text-xs md:text-sm font-serif leading-tight mb-2'>
+                  Remote Developer Jobs
+                </h3>
+                <a
+                  href='#'
+                  className='text-[8px] md:text-[10px] font-mono hover:underline'
+                >
+                  VIEW →
+                </a>
+              </div>
             </div>
-          </div>
           </div>
         </section>
 
         {/* Footer */}
-        <footer className='border-t-2 border-primary pt-6 pb-8 mt-8'>
+        <footer className='border-t-[0.5px] border-primary/50 pt-6 pb-8 mt-8'>
           <div className='flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono'>
             <div className='text-center md:text-left'>
               <div className='font-bold'>© 2025 CHRIS WISNIEWSKI</div>
-              <div className='text-muted-foreground mt-1'>ALL RIGHTS RESERVED</div>
+              <div className='text-muted-foreground mt-1'>
+                ALL RIGHTS RESERVED
+              </div>
             </div>
             <div className='flex items-center gap-4'>
               <a
                 href='mailto:chriscoding@icloud.com'
                 className='hover:underline flex items-center gap-1.5'
               >
-                <Envelope size={16} weight='bold' />
+                <Envelope size={16} weight='light' />
               </a>
               <span>•</span>
               <a
@@ -604,7 +619,7 @@ export default function Home() {
                 rel='noopener noreferrer'
                 className='hover:underline flex items-center gap-1.5'
               >
-                <XLogoIcon size={16} weight='bold' />
+                <XLogoIcon size={16} weight='light' />
               </a>
               <span>•</span>
               <a
@@ -613,7 +628,7 @@ export default function Home() {
                 rel='noopener noreferrer'
                 className='hover:underline flex items-center gap-1.5'
               >
-                <GithubLogo size={16} weight='bold' />
+                <GithubLogo size={16} weight='light' />
               </a>
             </div>
           </div>
