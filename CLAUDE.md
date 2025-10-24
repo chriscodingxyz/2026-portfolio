@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal portfolio website for Chris Wiz, a fullstack engineer. The portfolio is designed with a unique newspaper-style aesthetic ("Chris Wiz Chronicle") featuring a black and white design with a responsive grid-based layout inspired by print media.
+This is a personal portfolio website for Chris Wiz, a fullstack engineer. The portfolio features a clean, minimalist design with a responsive grid-based layout using precise coordinate positioning.
 
 ## Technology Stack
 
@@ -248,10 +248,10 @@ Four custom fonts are configured in `app/layout.tsx`:
 
 ## Key Design Elements
 
-1. **Newspaper Aesthetic**: Black and white color scheme with heavy use of borders, monospace fonts, and grid structures
+1. **Grid-Based Design**: Clean aesthetic with precise borders, monospace fonts, and structured grid layouts
 2. **Responsive Grid System**: Scales from 17×12 cells on mobile to 46×22 cells on desktop with letter-number coordinate positioning
-3. **Decorative Elements**: Barcodes, circles, arrows, and letter markers for visual interest
-4. **Terminal/Code Blocks**: Black backgrounds with green/colored text for technical content
+3. **Visual Consistency**: Uniform cell sizes and borders create a cohesive, structured appearance
+4. **Dark/Light Theme Support**: Flexible theming with mode toggle for user preference
 5. **Responsive Transformation**: Complete layout restructure between viewports using coordinate-based positioning
 
 ## Path Aliases

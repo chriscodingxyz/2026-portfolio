@@ -20,7 +20,7 @@ import {
   VercelIcon,
   ResendIcon
 } from '@/components/TechIcons'
-import { NewspaperThemeToggle } from '@/components/newspaper-theme-toggle'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { useEffect, useState } from 'react'
 
 // Grid configuration per viewport
@@ -163,10 +163,23 @@ export default function Home() {
       <div className='container'>
         {/* Header */}
         <header className='mb-4 md:mb-6'>
-          {/* Top border section - matching source.png */}
-          <div className='py-2 md:py-3 mb-4 md:mb-6'>
-            <div className='flex lg:flex-row justify-between items-center lg:items-start gap-2 lg:gap-0'>
-              <div className='text-[10px] md:text-xs uppercase tracking-wider font-mono'>
+          {/* Top border section with responsive grid */}
+          <div className='py-2 md:py-3 mb-4 md:mb-6 relative'>
+            <div
+              className='responsive-grid'
+              style={{
+                gridTemplateColumns: `repeat(${GRID_CONFIG[viewport].cols}, 1fr)`,
+                gridTemplateRows: '1fr'
+              }}
+            >
+              {/* Date on the left - spans first few columns */}
+              <div
+                className='text-[10px] md:text-xs uppercase tracking-wider font-mono flex items-center whitespace-nowrap relative z-10'
+                style={{
+                  gridColumn: `1 / ${Math.min(7, GRID_CONFIG[viewport].cols)}`,
+                  gridRow: '1 / 2'
+                }}
+              >
                 {new Date()
                   .toLocaleDateString('en-US', {
                     month: 'long',
@@ -175,28 +188,13 @@ export default function Home() {
                   })
                   .toUpperCase()}
               </div>
-              <nav className='text-[10px] md:text-xs uppercase tracking-wider text-center flex-1 font-mono'>
-                <div className='flex items-center justify-center gap-3 md:gap-6'>
-                  {/* <a href='#tech-stack' className='hover:underline'>
-                    Tech Stack
-                  </a>
-                  <span>•</span>
-                  <a href='#projects' className='hover:underline'>
-                    Projects
-                  </a>
-                  <span>•</span>
-                  <a href='#experience' className='hover:underline'>
-                    Experience
-                  </a> */}
-                </div>
-              </nav>
-              <div className='flex items-center'>
-                <NewspaperThemeToggle />
-              </div>
+
+              {/* Theme toggle buttons - positioned directly in grid at last 3 columns */}
+              <ThemeToggle totalCols={GRID_CONFIG[viewport].cols} />
             </div>
           </div>
 
-          {/* Newspaper Title */}
+          {/* Title */}
           {/* <h1
             className='text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] leading-none text-center mb-2'
             style={{ fontFamily: 'var(--font-chomsky)' }}
@@ -206,7 +204,7 @@ export default function Home() {
         </header>
 
         {/* Responsive Grid - scales from 12x12 on mobile to 46x22 on xl */}
-        <div className='mb-8 relative  border-[0.5px] border-primary/50'>
+        <div className='mb-8 relative  border-[0.5px] border-primary/20'>
           {/* Background grid cells layer */}
           <div
             className='responsive-grid absolute inset-0'
@@ -221,7 +219,7 @@ export default function Home() {
             }).map((_, i) => (
               <div
                 key={`cell-${i}`}
-                className='border-[0.5px] border-primary/50'
+                className='border-[0.5px] border-primary/20'
               />
             ))}
           </div>
@@ -371,110 +369,153 @@ export default function Home() {
           </h2>
         </div>
 
-        {/* Tech Icons Grid - Single Row */}
+        {/* Tech Icons Grid - Single Row matching main grid */}
         <div
           id='tech-stack'
-          className='border-[0.5px] border-primary/50 mb-6 md:mb-8'
+          className='mb-6 md:mb-8 relative border-[0.5px] border-primary/20'
         >
-          <div className='grid grid-cols-17 gap-0'>
+          {/* Background grid cells layer */}
+          <div
+            className='responsive-grid absolute inset-0'
+            style={{
+              gridTemplateColumns: `repeat(${GRID_CONFIG[viewport].cols}, 1fr)`,
+              gridTemplateRows: '1fr',
+              aspectRatio: `${GRID_CONFIG[viewport].cols} / 1`
+            }}
+          >
+            {Array.from({ length: GRID_CONFIG[viewport].cols }).map((_, i) => (
+              <div
+                key={`tech-cell-${i}`}
+                className='border-[0.5px] border-primary/20'
+              />
+            ))}
+          </div>
+
+          {/* Content layer */}
+          <div
+            className='responsive-grid relative'
+            style={{
+              gridTemplateColumns: `repeat(${GRID_CONFIG[viewport].cols}, 1fr)`,
+              gridTemplateRows: '1fr',
+              aspectRatio: `${GRID_CONFIG[viewport].cols} / 1`
+            }}
+          >
+            {/* Tech icons - each spans 1 column */}
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '1 / 2', gridRow: '1 / 2' }}
               title='React'
             >
               <ReactIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '2 / 3', gridRow: '1 / 2' }}
               title='Next.js'
             >
               <Nextjs className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '3 / 4', gridRow: '1 / 2' }}
               title='TypeScript'
             >
               <TypeScript className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '4 / 5', gridRow: '1 / 2' }}
               title='Tailwind CSS'
             >
               <TailwindCSS className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '5 / 6', gridRow: '1 / 2' }}
               title='Node.js'
             >
               <Nodejs className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '6 / 7', gridRow: '1 / 2' }}
               title='PostgreSQL'
             >
               <PostgreSQL className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '7 / 8', gridRow: '1 / 2' }}
               title='Drizzle ORM'
             >
               <DrizzleORM className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '8 / 9', gridRow: '1 / 2' }}
               title='Supabase'
             >
               <Supabase className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '9 / 10', gridRow: '1 / 2' }}
               title='React Query'
             >
               <ReactQuery className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '10 / 11', gridRow: '1 / 2' }}
               title='Better Auth'
             >
               <BetterAuth className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '11 / 12', gridRow: '1 / 2' }}
               title='shadcn/ui'
             >
               <Shadcnui className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '12 / 13', gridRow: '1 / 2' }}
               title='Docker'
             >
               <Docker className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '13 / 14', gridRow: '1 / 2' }}
               title='Vercel'
             >
               <VercelIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '14 / 15', gridRow: '1 / 2' }}
               title='GitHub'
             >
               <GithubIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '15 / 16', gridRow: '1 / 2' }}
               title='Claude AI'
             >
               <ClaudeAI className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '16 / 17', gridRow: '1 / 2' }}
               title='Resend'
             >
               <ResendIcon className='w-3 h-3 md:w-4 md:h-4' />
             </div>
             <div
-              className='border-[0.5px] border-primary/50 p-1 flex items-center justify-center'
+              className='relative z-10 flex items-center justify-center'
+              style={{ gridColumn: '17 / 18', gridRow: '1 / 2' }}
               title='Stripe'
             >
               <Stripe className='w-3 h-3 md:w-4 md:h-4' />
@@ -493,7 +534,7 @@ export default function Home() {
 
           <div className='grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4'>
             {/* Project 1 - Windows 98 */}
-            <div className='border-[0.5px] border-primary/50 group hover:bg-muted transition-colors'>
+            <div className='border-[0.5px] border-primary/20 group hover:bg-muted transition-colors'>
               <div className='aspect-video bg-primary overflow-hidden'>
                 <img
                   src='/project-98.png'
@@ -520,7 +561,7 @@ export default function Home() {
             </div>
 
             {/* Project 2 - Cherry NFT */}
-            <div className='border-[0.5px] border-primary/50 group hover:bg-muted transition-colors'>
+            <div className='border-[0.5px] border-primary/20 group hover:bg-muted transition-colors'>
               <div className='aspect-video bg-primary overflow-hidden'>
                 <img
                   src='/project-nft.png'
@@ -545,7 +586,7 @@ export default function Home() {
             </div>
 
             {/* Project 3 - Evento */}
-            <div className='border-[0.5px] border-primary/50 group hover:bg-muted transition-colors'>
+            <div className='border-[0.5px] border-primary/20 group hover:bg-muted transition-colors'>
               <div className='aspect-video bg-primary overflow-hidden'>
                 <img
                   src='/project-evento.png'
@@ -570,7 +611,7 @@ export default function Home() {
             </div>
 
             {/* Project 4 - rmtDev */}
-            <div className='border-[0.5px] border-primary/50 group hover:bg-muted transition-colors'>
+            <div className='border-[0.5px] border-primary/20 group hover:bg-muted transition-colors'>
               <div className='aspect-video bg-primary overflow-hidden'>
                 <img
                   src='/project-rmtdev.png'
@@ -597,7 +638,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className='border-t-[0.5px] border-primary/50 pt-6 pb-8 mt-8'>
+        <footer className='border-t-[0.5px] border-primary/20 pt-6 pb-8 mt-8'>
           <div className='flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono'>
             <div className='text-center md:text-left'>
               <div className='font-bold'>© 2025 CHRIS WISNIEWSKI</div>
